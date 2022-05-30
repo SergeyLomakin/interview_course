@@ -175,3 +175,4 @@ data/*.*
 data/*/
 .vscode/settings.json
 /venv/
+/venv/
