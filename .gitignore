@@ -174,3 +174,4 @@ cython_debug/
 data/*.*
 data/*/
 .vscode/settings.json
+/venv/
