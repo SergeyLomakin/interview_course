@@ -6,4 +6,6 @@ app_name = 'mainapp'
 
 urlpatterns = [
     path('', mainapp.index, name='index'),
+    path('category/<int:pk>/', mainapp.category, name='category'),
+    path('create/', mainapp.ProductCreate.as_view(), name='product_create'),
 ]
