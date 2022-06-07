@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.sites.models import Site
+from django.contrib.sites.managers import CurrentSiteManager
 
 
 class ProductCategory(models.Model):
@@ -6,6 +8,8 @@ class ProductCategory(models.Model):
     description = models.TextField('описание', blank=True)
     short_desc = models.CharField('краткое описание', max_length=200, blank=True)
     is_active = models.BooleanField('активность', db_index=True, default=True)
+    site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True)
+    objects = CurrentSiteManager('site')
 
     def __str__(self):
         return f'{self.name}'
@@ -23,6 +27,8 @@ class Product(models.Model):
     price = models.DecimalField('цена', max_digits=8, decimal_places=2, default=0)
     quantity = models.PositiveIntegerField('количество на складе', default=0)
     is_active = models.BooleanField('активность', db_index=True, default=True)
+    site = models.ManyToManyField(Site, null=True)
+    objects = CurrentSiteManager('site')
 
     def __str__(self):
         return f'{self.name}'

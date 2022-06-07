@@ -1,3 +1,4 @@
+from django.contrib.sites.shortcuts import get_current_site
 from django.db import models
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -13,6 +14,7 @@ class PageTitleMixin:
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context[self.page_title_key] = self.page_title
+        # context.update({'site': get_current_site(request=self.reguest)})
         return context
 
 
@@ -37,8 +39,7 @@ class ProductCreate(PageTitleMixin, CreateView):
 
 
 def category(request, pk):
-    products = Product.objects.prefetch_related(
-        'category').filter(category=pk)
+    products = Product.objects.prefetch_related('category').filter(category=pk)
 
     context = {
         'page_title': 'товары категории',

@@ -17,38 +17,41 @@
     {% endblock %}
 </head>
 <body>
-<div class="admin_container">
-    <div class="h2 text-center head">
-        Список продуктов
+    <div>
+        {{site.name}}
     </div>
-    {% block menu %}
-        <div class="admin_menu">
-            {% include 'includes/menu.html' %}
+    <div class="admin_container">
+        <div class="h2 text-center head">
+            Список продуктов
         </div>
-    {% endblock %}
+        {% block menu %}
+            <div class="admin_menu">
+                {% include 'includes/menu.html' %}
+            </div>
+        {% endblock %}
 
-    {% block container %}
-    {% endblock %}
+        {% block container %}
+        {% endblock %}
 
-    <div class="modal{% if show %} show{% endif %}">
-        <div class="modal__dialog">
-            <div class="modal__content">
-                <form class="form-horizontal" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <br>
-                    <input class="form-control" type="submit" value="сохранить">
-                </form>
-                {% comment %} <a href="{% url 'auth:register' %}"
-                    class="btn btn-round form-control">
-                    зарегистрироваться
-                </a> {% endcomment %}
+        <div class="modal{% if show %} show{% endif %}">
+            <div class="modal__dialog">
+                <div class="modal__content">
+                    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <br>
+                        <input class="form-control" type="submit" value="сохранить">
+                    </form>
+                    {% comment %} <a href="{% url 'auth:register' %}"
+                        class="btn btn-round form-control">
+                        зарегистрироваться
+                    </a> {% endcomment %}
+                </div>
             </div>
         </div>
+
+        <script src="{% static '/js/script.js' %}"></script>
+
     </div>
-
-    <script src="{% static '/js/script.js' %}"></script>
-
-</div>
 </body>
 </html>
