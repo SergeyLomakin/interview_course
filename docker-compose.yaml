@@ -28,7 +28,17 @@ services:
       "
     environment:
       DJANGO_SETTINGS_MODULE: mysite.settings.site_1
+    depends_on:
+      - db
+
+#  backend_1:
+
+#  backend_2:
 
   nginx:
     build:
-
+      context: ./nginx
+    ports:
+      - 8002:8002
+    depends_on:
+      - backend
