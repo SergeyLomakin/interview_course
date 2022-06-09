@@ -7,3 +7,14 @@ SECRET_KEY = 'django-insecure-pd^m&jxq&tacq*0diz1-w%od99a7v&if_p1#fwjd&bojt&_tbx
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mysite',
+        'USER': 'django',
+        'PASSWORD': 'qwerty',
+        'HOST': 'db',
+        'PORT': '54325',
+    }
+}
